@@ -52,6 +52,6 @@ export const ChatSidebar = ({
       </div>
     </ScrollArea>
     <Separator />
-    <div className="text-xs text-muted-foreground">Powered by SMAI</div>
+    <div className="text-xs text-muted-foreground">Powered by SMADEV</div>
   </div>
 )
