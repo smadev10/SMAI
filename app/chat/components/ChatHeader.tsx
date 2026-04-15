@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import { UserButton } from "@clerk/nextjs"
 import { MessageSquare, MessageSquareOff } from "lucide-react"
 import { ReactNode } from "react"
 
@@ -23,21 +24,24 @@ export const ChatHeader = ({
       <div className="text-lg font-semibold">{title}</div>
       <div className="text-sm text-muted-foreground">{subtitle}</div>
     </div>
-    <Button
-      variant={isEphemeralChat ? "secondary" : "ghost"}
-      size="icon"
-      className="absolute right-6 rounded-full"
-      onClick={onToggleEphemeral}
-      aria-pressed={isEphemeralChat}
-      aria-label={
-        isEphemeralChat ? "Chat not saved enabled" : "Chat not saved disabled"
-      }
-    >
-      {isEphemeralChat ? (
-        <MessageSquareOff className="h-4 w-4" />
-      ) : (
-        <MessageSquare className="h-4 w-4" />
-      )}
-    </Button>
+    <div className="absolute right-6 flex items-center gap-2">
+      <Button
+        variant={isEphemeralChat ? "secondary" : "ghost"}
+        size="icon"
+        className="rounded-full"
+        onClick={onToggleEphemeral}
+        aria-pressed={isEphemeralChat}
+        aria-label={
+          isEphemeralChat ? "Chat not saved enabled" : "Chat not saved disabled"
+        }
+      >
+        {isEphemeralChat ? (
+          <MessageSquareOff className="h-4 w-4" />
+        ) : (
+          <MessageSquare className="h-4 w-4" />
+        )}
+      </Button>
+      <UserButton />
+    </div>
   </div>
 )

@@ -26,14 +26,15 @@ export default function Page() {
     setSidebarOpen,
     isEphemeralChat,
     toggleEphemeralChat,
+    isLoading,
     sendMessage,
     newChat,
   } = useChatState()
 
+  const lastMessageContent = activeChat?.messages.at(-1)?.content
   useEffect(() => {
-    if (!activeChat?.messages.length) return
     scrollAnchorRef.current?.scrollIntoView({ behavior: "smooth" })
-  }, [activeChat?.messages.length])
+  }, [lastMessageContent])
 
   const handleSelectChat = (chatId: string) => {
     setActiveChatId(chatId)
@@ -82,7 +83,7 @@ export default function Page() {
                       value={message}
                       onChange={setMessage}
                       onSend={sendMessage}
-                      disabled={!message.trim()}
+                      disabled={!message.trim() || isLoading}
                     />
                   }
                 />
@@ -99,7 +100,7 @@ export default function Page() {
                     value={message}
                     onChange={setMessage}
                     onSend={sendMessage}
-                    disabled={!message.trim()}
+                    disabled={!message.trim() || isLoading}
                     className="bg-transparent shadow-none"
                   />
                 </div>
