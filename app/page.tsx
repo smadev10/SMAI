@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { Sheet, SheetContent } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
 import { ChatHeader } from "./chat/components/ChatHeader"
 import { ChatSidebar } from "./chat/components/ChatSidebar"
@@ -65,7 +65,7 @@ export default function Page() {
                 size="icon"
                 className="absolute top-1/2 left-6 z-30 -translate-y-1/2 rounded-full hover:bg-transparent active:bg-transparent md:hidden"
                 aria-label="Open sidebar"
-                onClick={() => setSidebarOpen(true)}
+                onClick={() => setSidebarOpen((o) => !o)}
               >
                 <Menu className="h-4 w-4" />
               </Button>
@@ -109,6 +109,7 @@ export default function Page() {
           ) : null}
         </main>
         <SheetContent side="left" className="w-72 p-0">
+          <SheetTitle className="sr-only">Navigation</SheetTitle>
           <ChatSidebar
             chats={chats}
             activeChatId={activeChatId}
