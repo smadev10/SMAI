@@ -20,9 +20,12 @@ export const ChatSidebar = ({
 }: ChatSidebarProps) => (
   <div className="flex h-full flex-col gap-4 p-4">
     <div className="flex items-center gap-3">
-      <Avatar>
-        <AvatarFallback>AI</AvatarFallback>
-      </Avatar>
+      <img
+        src="/assets/logo.jpg"
+        alt="SMA Development Logo"
+        className="rounded-full object-cover"
+        style={{ width: 40, height: 40 }}
+      />
       <div>
         <div className="text-sm font-semibold">SMAI</div>
         <div className="text-xs text-muted-foreground">Chats</div>
